@@ -844,7 +844,8 @@ def filter_video_before_upload(video,filter_night_time=False):
     [gpx_file_path, isStationaryVid] = gpx_from_blackvue(
             video, use_nmea_stream_timestamp=False)
     video_start_time = get_video_start_time_blackvue(video)
-    
+    print("WAITING TO MOVE FILE, TEST HERE......")
+    time.sleep(60)
     if isStationaryVid:
         if not gpx_file_path:
             if os.path.basename(os.path.dirname(video)) != 'no_gps_data':
@@ -859,8 +860,6 @@ def filter_video_before_upload(video,filter_night_time=False):
             stationary_folder = os.path.dirname(video) + '/stationary/'
             if not os.path.exists(stationary_folder):
                 os.mkdir(stationary_folder)
-            print("WAITING TO MOVE FILE, TEST HERE......")
-            time.sleep(60)
             os.rename(video, stationary_folder + os.path.basename(video))
             os.rename(gpx_file_path, stationary_folder +
                         os.path.basename(gpx_file_path))
