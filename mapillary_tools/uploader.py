@@ -841,11 +841,14 @@ def filter_video_before_upload(video,filter_night_time=False):
     except:
         print("ERROR: Unable to determine video details, skipping video")
         return True
+
+    print("WAITING TO MOVE FILE, TEST HERE......")
+    time.sleep(60)
+    
     [gpx_file_path, isStationaryVid] = gpx_from_blackvue(
             video, use_nmea_stream_timestamp=False)
     video_start_time = get_video_start_time_blackvue(video)
-    print("WAITING TO MOVE FILE, TEST HERE......")
-    time.sleep(60)
+
     if isStationaryVid:
         if not gpx_file_path:
             if os.path.basename(os.path.dirname(video)) != 'no_gps_data':
