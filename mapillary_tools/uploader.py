@@ -831,6 +831,8 @@ def upload_summary(file_list, total_uploads, split_groups, duplicate_groups, mis
 
 
 def filter_video_before_upload(video,filter_night_time=False):
+    print("WAITING TO MOVE FILE, TEST HERE......")
+    time.sleep(60)
     try:
         if not get_blackvue_info(video)['is_Blackvue_video']:
             print("ERROR: Direct video upload is currently only supported for Blackvue DRS900S camera. Please use video_process command for other camera files")
@@ -844,7 +846,7 @@ def filter_video_before_upload(video,filter_night_time=False):
     [gpx_file_path, isStationaryVid] = gpx_from_blackvue(
             video, use_nmea_stream_timestamp=False)
     video_start_time = get_video_start_time_blackvue(video)
-
+    
     if isStationaryVid:
         if not gpx_file_path:
             if os.path.basename(os.path.dirname(video)) != 'no_gps_data':
