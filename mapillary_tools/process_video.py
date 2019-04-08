@@ -221,7 +221,7 @@ def get_video_start_time(video_file):
 
 
 def get_video_start_time_blackvue(video_file):
-    with open(video_file, 'rb'):
+    with open(video_file, 'rb') as fd:
         fd.seek(0, io.SEEK_END)
         eof = fd.tell()
         fd.seek(0)
