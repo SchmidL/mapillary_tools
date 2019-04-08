@@ -831,8 +831,6 @@ def upload_summary(file_list, total_uploads, split_groups, duplicate_groups, mis
 
 
 def filter_video_before_upload(video,filter_night_time=False):
-    print("WAITING TO MOVE FILE, TEST HERE......")
-    time.sleep(60)
     try:
         if not get_blackvue_info(video)['is_Blackvue_video']:
             print("ERROR: Direct video upload is currently only supported for Blackvue DRS900S camera. Please use video_process command for other camera files")
@@ -861,6 +859,8 @@ def filter_video_before_upload(video,filter_night_time=False):
             stationary_folder = os.path.dirname(video) + '/stationary/'
             if not os.path.exists(stationary_folder):
                 os.mkdir(stationary_folder)
+            print("WAITING TO MOVE FILE, TEST HERE......")
+            time.sleep(60)
             os.rename(video, stationary_folder + os.path.basename(video))
             os.rename(gpx_file_path, stationary_folder +
                         os.path.basename(gpx_file_path))
