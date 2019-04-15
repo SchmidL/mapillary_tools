@@ -260,6 +260,7 @@ def post_process(import_path,
                                               os.path.dirname(image[len(os.path.abspath(import_path)) + 1:])] + [sequence_destination, os.path.basename(image)]))
         if not os.path.isdir(os.path.dirname(image_destination_path)):
             os.makedirs(os.path.dirname(image_destination_path))
+        print("Moving image: {} into: {}".format(image,image_destination_path))
         os.rename(image, image_destination_path)
         image_logs_dir = uploader.log_rootpath(image)
         destination_logs_dir = uploader.log_rootpath(image_destination_path)
